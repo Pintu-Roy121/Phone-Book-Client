@@ -38,7 +38,7 @@ const ContactEdit = () => {
             useremail
         }
 
-        fetch(`http://localhost:5000/singlecontact/${_id}`, {
+        fetch(`https://address-book-server-pintu-roy121.vercel.app/singlecontact/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
