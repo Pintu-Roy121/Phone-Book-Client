@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             {
                 path: '/contactDetails/:id',
                 element: <ContactDetails></ContactDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/contact/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/contact/${params.id}`)
             }
         ]
     }

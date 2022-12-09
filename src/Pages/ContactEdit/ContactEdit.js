@@ -13,12 +13,16 @@ const ContactEdit = () => {
     const { id } = data;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/contact/${id}`)
+        fetch(`http://localhost:5000/contact/${id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setContact(data))
     }, [id]);
 
-    const { address, useremail, birthday, companyname, email, firstname, jobtitle, lastname, phonenumber, _id } = contact;
+    const { address, name, useremail, birthday, companyname, email, firstname, jobtitle, lastname, phonenumber, _id } = contact;
 
     const onSubmit = data => {
         const updateContact = {
@@ -58,6 +62,9 @@ const ContactEdit = () => {
     return (
         <div className='px-10'>
             <h1 className='text-3xl font-bold text-green-600 text-center my-8 underline'>Edit Your contact</h1>
+            <h1 className='text-2xl font-bold text-center mt-8 '>Name: {name ? name : firstname}</h1>
+            <h1 className='text-2xl font-bold text-center'> Number: {phonenumber}</h1>
+            <hr className='border border-gray-800 mt-3' />
             <form onSubmit={handleSubmit(onSubmit)} className='font-semibold'>
                 {/* Name details............................... */}
                 <div className='flex items-center gap-4'>

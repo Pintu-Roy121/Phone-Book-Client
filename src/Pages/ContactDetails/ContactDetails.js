@@ -1,11 +1,22 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { FaBirthdayCake, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 const ContactDetails = () => {
-    const contact = useLoaderData()
+    const params = useParams();
+    // const contact = useLoaderData()
+    const [contact, setContact] = useState({})
 
-    console.log(contact);
+    useEffect(() => {
+        fetch(`http://localhost:5000/contact/${params.id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setContact(data))
+    }, [params.id])
+
     const { name, email, firstname, phonenumber, birthday, _id } = contact;
     const letter = name?.charAt(0) || firstname?.charAt(0);
 

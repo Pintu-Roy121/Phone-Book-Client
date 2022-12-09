@@ -8,11 +8,11 @@ const Navbar = () => {
     const { user, Logout } = useContext(AuthContext);
     const navigate = useNavigate()
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        const search = event.target.value;
-        console.log(search);
-    }
+    // const handleSearch = (event) => {
+    //     event.preventDefault();
+    //     const search = event.target.value;
+    //     console.log(search);
+    // }
 
     const handleLogout = () => {
         Logout()
@@ -39,12 +39,12 @@ const Navbar = () => {
                             <FaBars className='text-2xl' />
                         </label>
                         <FaUser className='text-2xl ml-4 text-blue-700' />
-                        <Link to='/' className="btn btn-ghost normal-case text-2xl">Contacts</Link>
+                        <Link to='/' className="btn btn-ghost normal-case text-2xl">All Contacts</Link>
                     </div>
 
-                    <div className="form-control">
+                    {/* <div className="form-control">
                         <input onChange={handleSearch} type="text" placeholder="Search" className="input w-full input-bordered" />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div>
