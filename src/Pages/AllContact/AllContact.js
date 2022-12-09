@@ -58,7 +58,12 @@ const AllContact = () => {
 
     return (
         <div className="w-full">
-            <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>All contact: {allContacts.length}</h1>
+            {
+                allContacts.length ?
+                    <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>All contact: {allContacts.length}</h1>
+                    :
+                    <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>No Contact Number</h1>
+            }
             <table className="table w-full">
 
                 <thead>

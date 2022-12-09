@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaBirthdayCake, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 const ContactDetails = () => {
