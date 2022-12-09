@@ -31,7 +31,7 @@ const AddContact = () => {
             phonenumber: data.phonenumber,
             useremail: user?.email
         }
-        fetch('http://localhost:5000/contacts', {
+        fetch('https://address-book-server-pintu-roy121.vercel.app/contacts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

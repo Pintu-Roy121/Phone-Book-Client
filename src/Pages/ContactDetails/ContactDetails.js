@@ -8,7 +8,7 @@ const ContactDetails = () => {
     const [contact, setContact] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/contact/${params.id}`, {
+        fetch(`https://address-book-server-pintu-roy121.vercel.app/contact/${params.id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

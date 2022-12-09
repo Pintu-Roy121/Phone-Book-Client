@@ -37,12 +37,12 @@ const router = createBrowserRouter([
             {
                 path: '/contactEdit/:id',
                 element: <ContactEdit></ContactEdit>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/contact/${params.id}`)
+                // loader: ({ params }) => fetch(`https://address-book-server-pintu-roy121.vercel.app/contact/${params.id}`)
             },
             {
                 path: '/contactDetails/:id',
                 element: <ContactDetails></ContactDetails>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/contact/${params.id}`)
+                // loader: ({ params }) => fetch(`https://address-book-server-pintu-roy121.vercel.app/contact/${params.id}`)
             }
         ]
     }

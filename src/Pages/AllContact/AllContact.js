@@ -17,7 +17,7 @@ const AllContact = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/allcontacts?email=${user?.email}`, {
+            fetch(`https://address-book-server-pintu-roy121.vercel.app/allcontacts?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -36,7 +36,7 @@ const AllContact = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/contacts/${id}`, {
+        fetch(`https://address-book-server-pintu-roy121.vercel.app/contacts/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
