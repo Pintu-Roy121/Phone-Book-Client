@@ -1,7 +1,5 @@
 # Phone Book or Contact Book
 
-# Phone Book or Contact Book
-
 ## Live Site
 # https://contact-book-bb617.web.app
 
