@@ -30,17 +30,20 @@ const ContactEdit = () => {
             birthday: data.birthday ? data.birthday : birthday,
             companyname: data.companyname ? data.companyname : companyname,
             email: data.email ? data.email : email,
-            firstname: data.firstname ? data.firstname : firstname,
+            name: data.name ? data.name : name,
             jobtitle: data.jobtitle ? data.jobtitle : jobtitle,
-            lastname: data.lastname ? data.lastname : lastname,
             phonenumber: data.phonenumber ? data.phonenumber : phonenumber,
+            firstname,
+            lastname,
             useremail
         }
 
-        fetch(`https://address-book-server-pintu-roy121.vercel.app/singlecontact/${_id}`, {
+        fetch(`http://localhost:5000/singlecontact/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
             },
             body: JSON.stringify(updateContact)
         })
@@ -67,21 +70,21 @@ const ContactEdit = () => {
             <hr className='border border-gray-800 mt-3' />
             <form onSubmit={handleSubmit(onSubmit)} className='font-semibold'>
                 {/* Name details............................... */}
-                <div className='flex items-center gap-4'>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text text-base font-semibold">First Name:</span>
-                        </label>
-                        <input type="text"
-                            defaultValue={firstname}
-                            {...register("firstname", {
-                                // required: true,
+                {/* <div className='flex items-center gap-4'> */}
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text text-base font-semibold">Name:</span>
+                    </label>
+                    <input type="text"
+                        defaultValue={name ? name : firstname}
+                        {...register("name", {
+                            // required: true,
 
-                            })}
-                            placeholder='First Name'
-                            className="input input-bordered input-info w-full" />
-                    </div>
-                    <div className="form-control w-full">
+                        })}
+                        placeholder='First Name'
+                        className="input input-bordered input-info w-full" />
+                </div>
+                {/* <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text text-base font-semibold">Last Name:</span>
                         </label>
@@ -93,7 +96,7 @@ const ContactEdit = () => {
                             placeholder='Last Name'
                             className="input input-bordered input-info w-full" />
                     </div>
-                </div>
+                </div> */}
                 {errors.lastname && <p className='text-red-600 font-semibold mt-3'>{errors.lastname?.message}</p>}
                 {errors.firstname && <p className='text-red-600 font-semibold mt-3'>{errors.firstname?.message}</p>}
 
