@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../context/AuthProvider';
 import useToken from '../hooks/useToken';
 
@@ -9,6 +10,8 @@ const Signup = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
+
+
     if (token) {
         navigate('/')
     }
@@ -16,18 +19,52 @@ const Signup = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
-        const password = form.password.value
+        const password = form.password.value;
+
+        const user = {
+            name,
+            email
+        }
 
         createUser(email, password)
             .then(result => {
-                setCreatedUserEmail(result?.user?.email)
+                saveUser(user);
             })
             .catch(error => {
                 setError(error.message);
             })
 
     }
+
+    const saveUser = (user) => {
+        fetch('https://address-book-server-pintu-roy121.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    Swal.fire(
+                        'Successful',
+                        'user saved',
+                        'success'
+                    )
+
+                    // toast.success('User Saved successful')
+                }
+
+                setCreatedUserEmail(user?.email)
+                // setCreatedUserEmail(user?.email)
+            })
+    }
+
+
+
     return (
         <div className='bg-slate-200 w-full md:w-3/4 mx-auto p-16 md:p-24 rounded-xl'>
             <h1 className='text-4xl text-center font-bold'>Sign Up</h1>

@@ -25,12 +25,13 @@ const ContactEdit = () => {
     const { address, name, useremail, birthday, companyname, email, firstname, jobtitle, lastname, phonenumber, _id } = contact;
 
     const onSubmit = data => {
+
         const updateContact = {
             address: data.address ? data.address : address,
             birthday: data.birthday ? data.birthday : birthday,
             companyname: data.companyname ? data.companyname : companyname,
             email: data.email ? data.email : email,
-            name: data.name ? data.name : name,
+            name: data.name ? data.name : firstname,
             jobtitle: data.jobtitle ? data.jobtitle : jobtitle,
             phonenumber: data.phonenumber ? data.phonenumber : phonenumber,
             firstname,
@@ -81,7 +82,7 @@ const ContactEdit = () => {
                             // required: true,
 
                         })}
-                        placeholder='First Name'
+                        placeholder='Name'
                         className="input input-bordered input-info w-full" />
                 </div>
                 {/* <div className="form-control w-full">

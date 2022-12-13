@@ -38,8 +38,9 @@ const Navbar = () => {
                         <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
                             <FaBars className='text-2xl' />
                         </label>
-                        <FaUser className='text-2xl ml-4 text-blue-700' />
-                        <Link to='/' className="btn btn-ghost normal-case text-2xl">All Contacts</Link>
+                        <Link to='/' className="btn flex gap-2 btn-ghost normal-case text-2xl">
+                            <FaUser className='text-2xl text-blue-700' />
+                            All Contacts</Link>
                     </div>
 
                     {/* <div className="form-control">

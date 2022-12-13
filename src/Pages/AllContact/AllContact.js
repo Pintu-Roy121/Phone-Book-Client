@@ -59,8 +59,8 @@ const AllContact = () => {
     return (
         <div className="w-full">
             {
-                allContacts.length ?
-                    <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>All contact: {allContacts.length}</h1>
+                allContacts?.length ?
+                    <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>All contact: {allContacts?.length}</h1>
                     :
                     <h1 className='text-3xl font-bold text-green-600 text-center mb-4 underline'>No Contact Number</h1>
             }
@@ -72,19 +72,21 @@ const AllContact = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
-                        <th>JobTitle & Company</th>
+                        <th>Company</th>
+                        <th>JobTitle</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        allContacts.map((contact, i) =>
-                            <tr key={contact._id}>
+                        allContacts?.map((contact, i) =>
+                            <tr key={contact._id} className='font-semibold'>
                                 <td className='text-lg font-bold'>{i + 1}</td>
                                 <td className='font-bold'>{contact?.name ? contact.name : contact.firstname}</td>
                                 <td>{contact.email}</td>
                                 <td>{contact.phonenumber}</td>
                                 <td>{contact.companyname}</td>
+                                <td>{contact.jobtitle}</td>
                                 <td>
                                     <div className="dropdown dropdown-end">
                                         {/* <label tabIndex={0} className="btn m-1">Click</label> */}
